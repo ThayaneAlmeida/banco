@@ -11,14 +11,7 @@ import conta.util.Cores;
 public class Menu {
 
 	public static void main(String[] args) {
-		
-		Conta c1 = new Conta(1,101,1, "Ana", 1000.0f);
-		c1.visualizar();
-		c1.sacar(100.0f);
-		c1.visualizar();
-		c1.depositar(1500.0f);
-		c1.visualizar();
-		
+				
 		ContaCorrente c2 = new ContaCorrente(2,123,2,"Maria",2000.0f,1000.0f);
 		c2.visualizar();
 		
