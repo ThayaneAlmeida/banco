@@ -1,7 +1,6 @@
 package conta;
 
 import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import conta.controller.ContaController;
@@ -94,14 +93,14 @@ public class Menu {
 				case 1 ->{
 					System.out.println("Limite da Conta Corrente: ");
 					limite = entrada.nextFloat();
-					contas.cadastrar(new ContaCorrente(0,agencia,tipo,titular,saldo,limite));
-					
+					ContaCorrente cc = new ContaCorrente(0,agencia,tipo,titular,saldo,limite);
+					cc.visualizar();
 				}
 				case 2 ->{
 					System.out.println("Aniversário da Conta Poupança: ");
 					aniversario = entrada.nextInt();
-					contas.cadastrar(new ContaPoupanca(0, agencia, tipo, titular, saldo, aniversario));
-					
+					ContaPoupanca cp = new ContaPoupanca(0, agencia, tipo, titular, saldo, aniversario);
+					cp.visualizar();
 					}
 				}
 				
@@ -110,9 +109,6 @@ public class Menu {
 				
 			case 2:
 				System.out.println("Listar todas as contas\n\n");
-				
-				contas.listarTodas();
-				
 				keyPress();
 				break;
 			
@@ -121,8 +117,6 @@ public class Menu {
 				
 				System.out.println("Número da conta: ");
 				numero = entrada.nextInt();
-				
-				contas.procurarPorNumero(numero);
 				
 				keyPress();
 				break;
@@ -133,7 +127,6 @@ public class Menu {
 				System.out.println("Número da conta: ");
 				numero = entrada.nextInt();
 				
-				if(contas.buscarNaCollection(numero) != null) {
 				System.out.println("Número da agencia: ");
 				agencia = entrada.nextInt();
 				
@@ -141,7 +134,7 @@ public class Menu {
 				entrada.skip("\\R?");
 				titular =  entrada.nextLine();
 				
-				tipo = contas.retornaTipo(numero);
+				tipo = 0;
 				
 				System.out.println("Saldo da conta: ");
 				saldo = entrada.nextFloat();
@@ -160,10 +153,6 @@ public class Menu {
 					cp.visualizar();
 					}
 				}
-			} else {
-				System.out.println("A conta não foi encontrada");
-			}
-				
 				keyPress();
 				break;
 			
@@ -172,8 +161,6 @@ public class Menu {
 				
 				System.out.println("Número da conta: ");
 				numero = entrada.nextInt();
-				
-				contas.deletar(numero);
 				
 				keyPress();
 				break;
@@ -187,8 +174,6 @@ public class Menu {
 				System.out.println("Valor do Saque: ");
 				valor = entrada.nextFloat();
 				
-				contas.sacar(numero, valor);
-				
 				keyPress();
 				break;
 				
@@ -200,8 +185,6 @@ public class Menu {
 				
 				System.out.println("Valor do Depósito: ");
 				valor = entrada.nextFloat();
-				
-				contas.depositar(numero, valor);
 				
 				keyPress();
 				break;
@@ -217,8 +200,6 @@ public class Menu {
 				
 				System.out.println("Valor do Transferência: ");
 				valor = entrada.nextFloat();
-				
-				contas.transferir(numero, numeroDestino, valor);
 				keyPress();
 				break;
 				

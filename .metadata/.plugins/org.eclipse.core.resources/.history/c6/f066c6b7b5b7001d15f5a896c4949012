@@ -187,7 +187,7 @@ public class Menu {
 				System.out.println("Valor do Saque: ");
 				valor = entrada.nextFloat();
 				
-				contas.sacar(numero, valor);
+				contas.sacar(numero);
 				
 				keyPress();
 				break;
